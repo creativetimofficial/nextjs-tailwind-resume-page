@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { Typography, Card, CardBody, Avatar } from "@material-tailwind/react";
 
+
 export function Testimonial() {
   const [active, setActive] = React.useState(3);
 
@@ -85,8 +86,8 @@ export function Testimonial() {
               <Image
                 width={768}
                 height={768}
-                alt="testimonial image"
                 src={`/image/avatar${active}.jpg`}
+                alt="testimonial image"
                 className="h-full rounded-lg w-full object-cover"
               />
             </div>

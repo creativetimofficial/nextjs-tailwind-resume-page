@@ -7,32 +7,11 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import {
-  RectangleStackIcon,
-  UserCircleIcon,
-  CommandLineIcon,
-  Squares2X2Icon,
   XMarkIcon,
   Bars3Icon,
 } from "@heroicons/react/24/solid";
 
-const NAV_MENU = [
-  {
-    name: "Page",
-    icon: RectangleStackIcon,
-  },
-  {
-    name: "Account",
-    icon: UserCircleIcon,
-  },
-  {
-    name: "Blocks",
-    icon: Squares2X2Icon,
-  },
-  {
-    name: "Docs",
-    icon: CommandLineIcon,
-  },
-];
+const NAV_MENU = ["Home", "About Us", "Contact Us"];
 
 function NavItem({ children }: { children: React.ReactNode }) {
   return (
@@ -53,7 +32,9 @@ function NavItem({ children }: { children: React.ReactNode }) {
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
 
-  const handleOpen = () => setOpen((cur) => !cur);
+  function handleOpen() {
+    setOpen((cur) => !cur);
+  }
 
   React.useEffect(() => {
     window.addEventListener(
@@ -63,22 +44,19 @@ export function Navbar() {
   }, []);
 
   return (
-    <MTNavbar shadow={false} fullWidth className="border-0">
+    <MTNavbar shadow={false} fullWidth color="transparent" className="border-0">
       <div className="container mx-auto flex items-center justify-between">
         <Typography color="blue-gray" className="text-lg font-bold">
           Material Tailwind
         </Typography>
         <ul className="ml-10 hidden items-center gap-8 lg:flex">
-          {NAV_MENU.map(({ name, icon: Icon }) => (
-            <NavItem key={name}>
-              <Icon className="h-5 w-5" />
-              {name}
-            </NavItem>
+          {NAV_MENU.map((nav) => (
+            <NavItem key={nav}>{nav}</NavItem>
           ))}
         </ul>
         <div className="hidden items-center gap-2 lg:flex">
-          <Button variant="text">Sign In</Button>
-          <Button color="gray">Sign Up</Button>
+          <Button variant="text">Log in</Button>
+          <Button color="gray">Contact</Button>
         </div>
         <IconButton
           variant="text"
@@ -96,21 +74,19 @@ export function Navbar() {
       <Collapse open={open}>
         <div className="container mx-auto mt-3 border-t border-gray-200 px-2 pt-4">
           <ul className="flex flex-col gap-4">
-            {NAV_MENU.map(({ name, icon: Icon }) => (
-              <NavItem key={name}>
-                <Icon className="h-5 w-5" />
-                {name}
-              </NavItem>
+            {NAV_MENU.map((nav) => (
+              <NavItem key={nav}>{nav}</NavItem>
             ))}
           </ul>
           <div className="mt-6 mb-4 flex items-center gap-2">
-            <Button variant="text">Sign In</Button>
-            <Button color="gray">Sign Up</Button>
+            <Button variant="text">Log in</Button>
+            <Button color="gray">Contact</Button>
           </div>
         </div>
       </Collapse>
     </MTNavbar>
   );
 }
+
 
 export default Navbar;
