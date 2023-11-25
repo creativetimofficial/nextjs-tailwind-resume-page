@@ -6,10 +6,7 @@ import {
   IconButton,
   Typography,
 } from "@material-tailwind/react";
-import {
-  XMarkIcon,
-  Bars3Icon,
-} from "@heroicons/react/24/solid";
+import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/solid";
 
 const NAV_MENU = ["Home", "About Us", "Contact Us"];
 
@@ -44,9 +41,21 @@ export function Navbar() {
   }, []);
 
   return (
-    <MTNavbar shadow={false} fullWidth color="transparent" className="border-0">
+    <MTNavbar
+      fullWidth
+      blurred={false}
+      shadow={false}
+      color="white"
+      className="sticky top-0 z-50 border-0"
+    >
       <div className="container mx-auto flex items-center justify-between">
-        <Typography color="blue-gray" className="text-lg font-bold">
+        <Typography
+          as="a"
+          href="https://www.material-tailwind.com"
+          target="_blank"
+          color="blue-gray"
+          className="text-lg font-bold"
+        >
           Material Tailwind
         </Typography>
         <ul className="ml-10 hidden items-center gap-8 lg:flex">
@@ -56,7 +65,9 @@ export function Navbar() {
         </ul>
         <div className="hidden items-center gap-2 lg:flex">
           <Button variant="text">Log in</Button>
-          <Button color="gray">Contact</Button>
+          <a href="https://www.material-tailwind.com/blocks" target="_blank">
+            <Button color="gray">blocks</Button>
+          </a>
         </div>
         <IconButton
           variant="text"
@@ -80,13 +91,14 @@ export function Navbar() {
           </ul>
           <div className="mt-6 mb-4 flex items-center gap-2">
             <Button variant="text">Log in</Button>
-            <Button color="gray">Contact</Button>
+            <a href="https://www.material-tailwind.com/blocks" target="_blank">
+              <Button color="gray">blocks</Button>
+            </a>
           </div>
         </div>
       </Collapse>
     </MTNavbar>
   );
 }
-
 
 export default Navbar;
